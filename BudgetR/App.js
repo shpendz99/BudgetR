@@ -1,25 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { Provider } from 'react-redux';
+import { SafeAreaView,StyleSheet, Text, View } from 'react-native';
+import Login from './screens/Login';
 
 //set up redux
 
 export default function App() {
-  return (
-    <Provider store={}>  
-    <View style={styles.container}>
-      <Text>Project BudgetR </Text>
+  return ( 
+    
+      <Login/>  
 
-    </View>
-    </Provider>
+    
     
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
