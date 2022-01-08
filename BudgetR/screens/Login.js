@@ -1,48 +1,67 @@
-import React from 'react'
-import { StyleSheet, Text, SafeAreaView, View, Image, Button, TextInput } from 'react-native'
+import React, {useState} from 'react'
+import { StyleSheet, SafeAreaView, View, Image, ScrollView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
+import CustomInput from '../components/CustomInput';
+import CustomButton from '../components/CustomButton';
 
-const UselessTextInput = () => {
 
-}
+
 
 const Login = () => {
-    const [email, onChangeText] = React.useState(null);
-    const [password, onChangePassword] = React.useState(null);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const onSignInPressed = () =>{
+        console.warn("Sign in")
+    }
+    const onForgotPasswordPressed = () => {
+        console.warn("Forgot password")
+    }
+    const onSignInGooglePressed = () => {
+        console.warn("Sign Google")
+    }
+
     return (
-
-      
-        <SafeAreaView style={styles.container}>
-            <LinearGradient
-                // Background Linear Gradient
-                colors={['rgba(119,81,253,0.4)', 'transparent']}
-                style={styles.background}
-            />
-            
-            <View style = {styles.img_container}>                    
-                <Image style = {styles.img}
-                    source={require('../images/logo.png')}
-                />
-            </View>
-
-            <View style = {styles.login_container}>
-                <TextInput
-                    style={styles.login}
-                    onChangeText={onChangeText}
-                    placeholder="Enter Email"
-                    value={email}
-                  />
-                <TextInput
-                    style={styles.login}
-                    onChangeText={onChangePassword}
-                    value={password}
-                    placeholder="Enter Password"
+        <LinearGradient style={styles.background} colors={['#42275A', '#734B6D']}>
+            <ScrollView>
+             
+                <View style={styles.container}>
                     
-                  />
-            </View>
+                    <View style = {styles.img_container}>                    
+                        <Image style = {styles.img}
+                            source={require('../images/logo.png')}
+                        />
+                    </View>
+                    <CustomInput placeholder="Username" value = {username} setValue={setUsername}/>
+                    <CustomInput 
+                        placeholder="Password" 
+                        value = {password} 
+                        setValue={setPassword}
+                        secureTextEntry={true}
+                        />
+                
+                <CustomButton 
+                        text= "Sign In" 
+                        onPress={onSignInPressed} 
+                        />
 
-        </SafeAreaView>
+                <CustomButton 
+                        text= "Forgot Password" 
+                        onPress={onForgotPasswordPressed} 
+                        type="TERTIARY"
+                        />
+                    <CustomButton 
+                        text= "Sign In with Google" 
+                        onPress={onSignInGooglePressed} 
+                        bgColor="#FAE9EA"
+                        fgColor="#DD4D33"
+                        />
 
+
+                </View>
+            </ScrollView>
+            
+        </LinearGradient>
 
     )
 }
@@ -52,53 +71,29 @@ export default Login
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems:'center',
-        backgroundColor: '#4892FF',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     background: {
         position: 'absolute',
-        left:0,
+        left: 0,
         right: 0,
-        top: 0, 
-        height: 500,
-    },
+        top: 0,
+        height: '100%',
+      },
+    
     img_container:{ 
         alignItems: 'center',
-        padding: 25,
-        //backgroundColor: 'black',
+        paddingTop: 40,
+        margin: 65,
         
     },
     img:{
-        height: 250,
-        width: 250,
+        height: 210,
+        width: 210,
         resizeMode: 'contain',
-    },
-    login_container: {
-        alignItems:'center',
-        // backgroundColor: '#fff',
-        padding: 20, 
-        margin: 10
-
-    },
-    login:{
-        height: 60,
-        width: 245,
-        margin: 20,
-        padding: 5,
-        borderWidth:1, 
-        borderRadius: 5,
         
-    },
-    button:{
-        padding: 15,
-        alignItems: 'center',
-        borderRadius: 5,
-    },
-    text: {
-        backgroundColor: 'transparent',
-        fontSize: 15,
-        color: '#fff',
     }
 })
+
 
