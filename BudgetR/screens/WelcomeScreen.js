@@ -1,25 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { StyleSheet, View, Image, ScrollView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
-import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 
-
-
-
-const Login = ({navigation}) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+const WelcomeScreen = ({navigation}) => {
 
     const onSignInPressed = () =>{
-        navigation.navigate('Signup');
+        navigation.navigate('Login');
         console.warn("Sign in")
     }
     const onForgotPasswordPressed = () => {
         console.warn("Forgot password")
-    }
-    const onSignInGooglePressed = () => {
-        console.warn("Sign Google")
     }
 
     return (
@@ -33,42 +24,27 @@ const Login = ({navigation}) => {
                             source={require('../images/logo.png')}
                         />
                     </View>
-                    <CustomInput placeholder="Username" value = {username} setValue={setUsername}/>
-                    <CustomInput 
-                        placeholder="Password" 
-                        value = {password} 
-                        setValue={setPassword}
-                        secureTextEntry={true}
-                        />
                     
+                    <CustomButton 
+                        text= "Register" 
+                        onPress={onForgotPasswordPressed} 
+                        type = "SECONDARY"
+                        />
                     <CustomButton 
                         text= "Log In" 
                         onPress={onSignInPressed} 
+                        
                         />
-
-                    <CustomButton 
-                        text= "Forgot Password?" 
-                        onPress={onForgotPasswordPressed} 
-                        type="TERTIARY"
-                        />
-                    {/* <CustomButton 
-                        text= "Sign In with Google" 
-                        onPress={onSignInGooglePressed} 
-                        bgColor="#FAE9EA"
-                        fgColor="#DD4D33"
-                        /> */}
-
+                    
 
                 </View>
             </ScrollView>
             
         </LinearGradient>
-
     )
 }
 
-export default Login
-
+export default WelcomeScreen
 
 const styles = StyleSheet.create({
     container: {
@@ -87,7 +63,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop: 40,
         margin: 65,
-        marginBottom: 130,
+        marginBottom: 160,
         
     },
     img:{
@@ -96,6 +72,6 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         
     }
+
+
 })
-
-

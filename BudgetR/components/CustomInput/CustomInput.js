@@ -24,13 +24,13 @@ const styles = StyleSheet.create({
         borderColor:'#e8e8e8',
         borderWidth: 1,
         borderRadius: 5,
-
+            
         paddingHorizontal: 25,
         paddingVertical: 15,
-        marginVertical: 5,
+        marginVertical: 10,
     },
     input:{
-        
+        fontSize:16,
     },
 
 })
