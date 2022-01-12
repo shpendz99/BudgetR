@@ -7,14 +7,15 @@ const WelcomeScreen = ({navigation}) => {
 
     const onSignInPressed = () =>{
         navigation.navigate('Login');
-        console.warn("Sign in")
+        console.warn("Sign in");
     }
-    const onForgotPasswordPressed = () => {
-        console.warn("Forgot password")
+    const onRegisterPressed = () => {
+        navigation.navigate('Signup');
+        console.warn("Heading to Register Page");
     }
 
     return (
-        <LinearGradient style={styles.background} colors={['#42275A', '#734B6D']}>
+        <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
             <ScrollView>
              
                 <View style={styles.container}>
@@ -27,7 +28,7 @@ const WelcomeScreen = ({navigation}) => {
                     
                     <CustomButton 
                         text= "Register" 
-                        onPress={onForgotPasswordPressed} 
+                        onPress={onRegisterPressed} 
                         type = "SECONDARY"
                         />
                     <CustomButton 

@@ -23,7 +23,7 @@ const Login = ({navigation}) => {
     }
 
     return (
-        <LinearGradient style={styles.background} colors={['#42275A', '#734B6D']}>
+        <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
             <ScrollView>
              
                 <View style={styles.container}>
@@ -51,12 +51,6 @@ const Login = ({navigation}) => {
                         onPress={onForgotPasswordPressed} 
                         type="TERTIARY"
                         />
-                    {/* <CustomButton 
-                        text= "Sign In with Google" 
-                        onPress={onSignInGooglePressed} 
-                        bgColor="#FAE9EA"
-                        fgColor="#DD4D33"
-                        /> */}
 
 
                 </View>
@@ -85,7 +79,7 @@ const styles = StyleSheet.create({
     
     img_container:{ 
         alignItems: 'center',
-        paddingTop: 40,
+        paddingTop: 30,
         margin: 65,
         marginBottom: 130,
         
