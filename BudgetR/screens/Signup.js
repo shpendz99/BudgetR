@@ -3,7 +3,7 @@ import { StyleSheet, Text, ScrollView, SafeAreaView, Image, View } from 'react-n
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
-
+import {auth} from '../firebase';
 
 
 
@@ -14,8 +14,15 @@ const Signup = ({navigation}) => {
     const [passwordRepeat, setPasswordRepeat] = useState('');
 
     const onRegisterPressed = () =>{
-        navigation.navigate('account');
-        console.warn("Account Registered")
+        auth
+            .createUserWithEmailAndPassword(email, password)
+            .then(userCredential =>{
+                const user = userCredential.user;
+                console.log("Registered: ", user.email + user.password)
+            })
+            .catch(error =>alert(error.message))
+        // navigation.navigate('account');
+        // console.warn("Account Registered")
     }
     const onSignInPressed = () => {
         navigation.navigate('Login');
