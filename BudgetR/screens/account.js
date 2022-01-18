@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, SafeAreaView } from 'react-native'
 
-const account = () => {
+const Account = () => {
     return (
         <SafeAreaView>
             <Text>This is the Account Tab</Text>
@@ -9,6 +9,6 @@ const account = () => {
     )
 }
 
-export default account
+export default Account
 
 const styles = StyleSheet.create({})

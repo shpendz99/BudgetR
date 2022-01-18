@@ -20,7 +20,7 @@ const Signup = ({navigation}) => {
                 const user = userCredential.user;
                 console.log("Registered: ", user.email + user.password)
             })
-            .catch(error =>alert(error.message))
+            .catch(error =>alert(error.message ))
         // navigation.navigate('account');
         // console.warn("Account Registered")
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 
-const settings = () => {
+const Settings = () => {
     return (
         <SafeAreaView>
             <Text>Settings Page</Text>
@@ -9,6 +9,6 @@ const settings = () => {
     )
 }
 
-export default settings
+export default Settings
 
 const styles = StyleSheet.create({})

@@ -25,6 +25,22 @@ const Login = ({navigation}) => {
             .catch(error => alert(error.message))
 
     }
+
+    //This code is different to the one above but does the same task !¬¬¬¬¬
+
+    // const onSignInPressed = async () => {
+    //     try {
+    //       const userCredential = await auth.createUserWithEmailAndPassword(email, password)
+    //       const user = userCredential.user
+        
+        
+    //       console.log("Registered with:", user.email);
+    //     } catch (e) {
+    //       console.log(e)
+    //     }
+    //   }
+
+
     const onForgotPasswordPressed = () => {
         console.warn("Forgot password")
     }

@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
     text_SECONDARY:{
         color: 'white',
         fontWeight: 'bold',
-        fontFamily: 'Montserrat-Light'
     }
 
 
