@@ -7,22 +7,21 @@ import {auth} from '../firebase';
 
 
 
-const Login = ({navigation}) => {
+const Login = ({}) => {
 
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const onSignInPressed = () =>{
-        // navigation.navigate('Signup');
-        // console.warn("Sign in")
+        
         auth
             .signInWithEmailAndPassword(email,password)
             .then(userCredentials =>{
                 const user = userCredentials.user;
                 console.log("Logged in", user.email)
             })
-            .catch(error => alert(error.message))
+            .catch(error => alert(error.message + '\nIncorrect Credentials'))
 
     }
 
