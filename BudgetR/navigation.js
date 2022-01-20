@@ -58,20 +58,22 @@ export const SignedInStack = () =>(
                 tabBarShowLabel: false,
                 headerShown: false,
                 tabBarStyle:{
-                    backgroundColor: 'white',
+                    // backgroundColor: '#white',
                     position: 'absolute',
                     bottom: 40,
                     marginHorizontal: 20,
                     // Max Height...
                     height: 60,
                     borderRadius: 10,
+                    elevation: 5,
                     // Shadow...
                     shadowColor: '#000',
                     shadowOpacity: 0.06,
+                    shadowRadius: 10,
                     shadowOffset: {
                       width: 10,
                       height: 10
-                      
+
                     }
                 }
 
@@ -85,9 +87,9 @@ export const SignedInStack = () =>(
                         top: 20
                       }}>
                         <FontAwesome5
-                          name="book"
+                          name="flickr"
                           size={20}
-                          color={focused ? 'red' : 'gray'}
+                          color={focused ? '#5D9EFF' : 'gray'}
                         ></FontAwesome5>
                       </View>
                     )
@@ -102,13 +104,11 @@ export const SignedInStack = () =>(
                         <FontAwesome5
                           name="money-bill-wave"
                           size={20}
-                          color={focused ? 'red' : 'gray'}
+                          color={focused ? '#5D9EFF' : 'gray'}
                         ></FontAwesome5>
                       </View>
                     )
             }}/>
-            <Tab.Screen name = "empty" component = {TabButton}
-            />
 
             <Tab.Screen name = "Account" component = {Account} options= {{
                 tabBarIcon: ({focused}) =>(
@@ -120,7 +120,7 @@ export const SignedInStack = () =>(
                         <FontAwesome5
                           name="chart-pie"
                           size={20}
-                          color={focused ? 'red' : 'gray'}
+                          color={focused ? '#5D9EFF' : 'gray'}
                         ></FontAwesome5>
                       </View>
                     )
@@ -135,7 +135,7 @@ export const SignedInStack = () =>(
                         <FontAwesome5
                           name="cog"
                           size={20}
-                          color={focused ? 'red' : 'gray'}
+                          color={focused ? '#5D9EFF' : 'gray'}
                         ></FontAwesome5>
                       </View>
                     )
