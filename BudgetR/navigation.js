@@ -83,7 +83,7 @@ export const SignedInStack = () =>(
                         top: 20
                       }}>
                         <FontAwesome5
-                          name="flickr"
+                          name="wallet"
                           size={20}
                           color={focused ? '#5D9EFF' : 'gray'}
                         ></FontAwesome5>

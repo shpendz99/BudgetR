@@ -7,12 +7,12 @@ const Budget = () => {
     return (
         <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
             <SafeAreaView style={styles.container}>
-                    <AccountBalance/>
+                <AccountBalance/>
                         
                     
-                </SafeAreaView>
-
+            </SafeAreaView>
             <ScrollView>
+                <View style = {styles.line}></View>
                 
             </ScrollView>
             
@@ -36,4 +36,12 @@ const styles = StyleSheet.create({
         top: 0,
         height: '100%',
       },
+      line:{
+        height: 1,
+        backgroundColor: '#fff',
+        borderRadius: 100,
+        marginHorizontal: 20,
+        
+        
+    },
 })

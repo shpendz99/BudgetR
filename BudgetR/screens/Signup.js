@@ -7,8 +7,6 @@ import {auth, db} from '../firebase';
 
 
 
-
-
 const Signup = ({}) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -16,27 +14,7 @@ const Signup = ({}) => {
     const [passwordRepeat, setPasswordRepeat] = useState('');
 
 
-// const onRegisterPressed = async ()=>{
-//     try{
-//         const authUser =  await auth.createUserWithEmailAndPassword(email, password)
 
-//         db.collection('users').add({
-//             username: username,
-//             email: email,
-//             password: password,
-//             account : 0
-//         })
-
-        
-
-
-//     }catch(error){
-//         alert("ERROR")
-//     }
-// }
-
-
-//1) the program should authenticate the user's email and password
 const onRegisterPressed = () =>{
     try{
         auth.createUserWithEmailAndPassword(email, password)
@@ -55,42 +33,7 @@ const onRegisterPressed = () =>{
     }
 }
 
-    // const onRegisterPressed = () =>{
-    //     try{
-    //         const credential = auth.createUserWithEmailAndPassword(email, password);
-    //         const {uid} = credential;
-    //         const user = {
-    //             username: username,
-    //             email: email,
-    //             password: password,
-    //             user_id: uid
-    //         };
 
-    //          db.collection('users').doc(uid).set(user) 
-    //     }catch(error){
-    //         console.warn("Error")
-    //     }
-        
-    //     // navigation.navigate('account');
-    //     // console.warn("Account Registered")
-    // }
-            
-        // db.collection('users').add({
-        //     owner_uid: credential.user.uid,
-        //     username: username,
-        //     email: credential.user.email,
-        //     password: credential.user.password,
-        // })  
-
-
-
-    // const onRegisterPressed = () =>{
-    //     auth
-    //         .createUserWithEmailAndPassword(email, password)     
-    //         .catch(error =>alert(error.message ))
-    //     // navigation.navigate('account');
-    //     // console.warn("Account Registered")
-    // }
 
 
     const onSignInPressed = () => {

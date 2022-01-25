@@ -11,12 +11,8 @@ const Feed = () => {
                    
                 </SafeAreaView>
             <ScrollView>
-                <View>
-                    <Text>
-                        Feed
-
-                    </Text>
-                </View>
+                <View style = {styles.line}></View>
+                
             </ScrollView>
             
         </LinearGradient>
@@ -38,6 +34,14 @@ const styles = StyleSheet.create({
         right: 0,
         top: 0,
         height: '100%',
-      }
+      },
+    line:{
+        height: 1,
+        backgroundColor: '#fff',
+        borderRadius: 100,
+        marginHorizontal: 20,
+        
+        
+    },
 
 })

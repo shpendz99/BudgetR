@@ -22,12 +22,12 @@ export default AccountBalance
 const styles = StyleSheet.create({
     container: {
         // flexDirection: 'column',
-        height: 120,
+        height: 90,
         backgroundColor: '#fff',
         borderRadius: 15,
         marginHorizontal: 20,
         marginTop: 8,
-        marginBottom: 20
+        marginBottom: 20,
         
     },
     shadowProp:{
