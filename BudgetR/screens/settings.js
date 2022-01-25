@@ -1,16 +1,17 @@
 import React from 'react'
 import { StyleSheet, Text, View, SafeAreaView, ScrollView  } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
+import AccountBalance from '../components/TopHeader/AccountBalance';
 
 const Settings = () => {
     return (
         <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
-            <ScrollView>
-                <SafeAreaView>
-                    <Text>Settings Page</Text>
-                </SafeAreaView>
-            </ScrollView>
+            <SafeAreaView>
+                    <AccountBalance/>
+                        
+            </SafeAreaView>
             
+        
         </LinearGradient>
     )
 }

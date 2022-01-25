@@ -68,13 +68,9 @@ export const SignedInStack = () =>(
                     elevation: 5,
                     // Shadow...
                     shadowColor: '#000',
-                    shadowOpacity: 0.06,
-                    shadowRadius: 10,
-                    shadowOffset: {
-                      width: 10,
-                      height: 10
-
-                    }
+                    shadowOpacity: 0.75,
+                    shadowRadius: 5,
+                    shadowOffset: {width: 0, height: 4}
                 }
 
             }}

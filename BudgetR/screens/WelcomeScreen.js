@@ -7,11 +7,11 @@ const WelcomeScreen = ({navigation}) => {
 
     const onSignInPressed = () =>{
         navigation.navigate('Login');
-        console.warn("Sign in");
+        
     }
     const onRegisterPressed = () => {
         navigation.navigate('Signup');
-        console.warn("Heading to Register Page");
+       
     }
 
     return (
@@ -34,7 +34,6 @@ const WelcomeScreen = ({navigation}) => {
                     <CustomButton 
                         text= "Log In" 
                         onPress={onSignInPressed} 
-                        
                         />
                     
 

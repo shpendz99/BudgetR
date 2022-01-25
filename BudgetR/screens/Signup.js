@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, ScrollView, SafeAreaView, Image, View } from 'react-native'
+import { StyleSheet, Text, ScrollView, SafeAreaView, Image, View, Alert } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -7,19 +7,92 @@ import {auth, db} from '../firebase';
 
 
 
-const Signup = ({navigation}) => {
+
+
+const Signup = ({}) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordRepeat, setPasswordRepeat] = useState('');
 
-    const onRegisterPressed = () =>{
-        auth
-            .createUserWithEmailAndPassword(email, password)     
-            .catch(error =>alert(error.message ))
-        // navigation.navigate('account');
-        // console.warn("Account Registered")
+
+// const onRegisterPressed = async ()=>{
+//     try{
+//         const authUser =  await auth.createUserWithEmailAndPassword(email, password)
+
+//         db.collection('users').add({
+//             username: username,
+//             email: email,
+//             password: password,
+//             account : 0
+//         })
+
+        
+
+
+//     }catch(error){
+//         alert("ERROR")
+//     }
+// }
+
+
+//1) the program should authenticate the user's email and password
+const onRegisterPressed = () =>{
+    try{
+        auth.createUserWithEmailAndPassword(email, password)
+
+        db.collection('users').add({
+            username: username,
+            email: email,
+            password: password,
+            account : 0
+        })
+        
+
+
+    }catch(error){
+        Alert.alert("Error! User already exists.")
     }
+}
+
+    // const onRegisterPressed = () =>{
+    //     try{
+    //         const credential = auth.createUserWithEmailAndPassword(email, password);
+    //         const {uid} = credential;
+    //         const user = {
+    //             username: username,
+    //             email: email,
+    //             password: password,
+    //             user_id: uid
+    //         };
+
+    //          db.collection('users').doc(uid).set(user) 
+    //     }catch(error){
+    //         console.warn("Error")
+    //     }
+        
+    //     // navigation.navigate('account');
+    //     // console.warn("Account Registered")
+    // }
+            
+        // db.collection('users').add({
+        //     owner_uid: credential.user.uid,
+        //     username: username,
+        //     email: credential.user.email,
+        //     password: credential.user.password,
+        // })  
+
+
+
+    // const onRegisterPressed = () =>{
+    //     auth
+    //         .createUserWithEmailAndPassword(email, password)     
+    //         .catch(error =>alert(error.message ))
+    //     // navigation.navigate('account');
+    //     // console.warn("Account Registered")
+    // }
+
+
     const onSignInPressed = () => {
         navigation.navigate('Login');
         console.warn("Continue to Sign in")
