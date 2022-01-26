@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     },
     balance : {
         color: '#94A3D3',
-        fontWeight: 'bold',
+        fontWeight: '300',
         fontSize: 30,
         marginLeft: 4,
         marginTop: 1

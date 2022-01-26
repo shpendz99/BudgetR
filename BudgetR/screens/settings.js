@@ -4,101 +4,119 @@ import { LinearGradient } from 'expo-linear-gradient';
 import AccountBalance from '../components/TopHeader/AccountBalance';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import IonIcon from 'react-native-vector-icons/Ionicons';
-
-
-
+import {auth} from '../firebase'
+import TabButton from '../components/BottomFooter/TabButton';
 
 
 const Settings = () => {
+    const handleSignOut = async() =>{
+        try{
+            await auth.signOut()
+        }
+        catch{
+            console.log("Error")
+        }
+        
+    }
+
+
+
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
-            <SafeAreaView>
-                    <AccountBalance/>
-            </SafeAreaView>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-                setModalVisible(!modalVisible);
-                }}
-              >
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Currency</Text>
-
-                        <TouchableOpacity style={styles.currencyButton}>
-                            <Text style={styles.buttonText}>GBP</Text> 
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.currencyButton}>
-                            <Text style={styles.buttonText}>EUR</Text> 
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.currencyButton}>
-                            <Text style={styles.buttonText}>USD</Text> 
-                        </TouchableOpacity>
-                            <Pressable
-                                style={[styles.button, styles.buttonClose]}
-                                onPress={() => setModalVisible(!modalVisible)}
-                            >
-                        <Text style={styles.textStyle}>Save Currency</Text>
-                        </Pressable>
-                    </View>
-                </View>
-            </Modal>
-
-            <ScrollView>
             
-                <View style = {styles.line}></View>
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity
-                        onPress={()=> setModalVisible(true)}
-                        style={styles.settingsButton}>
-                        <IonIcon
-                            name="cash-outline"
-                            size={20}
-                            color={ 'black'}
-                            style = {{paddingHorizontal: 5}}
-                            />
-                        <Text style={styles.buttonText}>Currency</Text>    
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={()=> console.warn("Second button")}
-                        style={styles.settingsButton}>
+                <SafeAreaView>
+                        <AccountBalance/>
+                </SafeAreaView>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <Text style={styles.modalText}>Currency</Text>
+
+                            <TouchableOpacity style={styles.currencyButton}>
+                                <Text style={styles.buttonText}>GBP</Text> 
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.currencyButton}>
+                                <Text style={styles.buttonText}>EUR</Text> 
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.currencyButton}>
+                                <Text style={styles.buttonText}>USD</Text> 
+                            </TouchableOpacity>
+                                <Pressable
+                                    style={[styles.button, styles.buttonClose]}
+                                    onPress={() => setModalVisible(!modalVisible)}
+                                >
+                            <Text style={styles.textStyle}>Save Currency</Text>
+                            </Pressable>
+                        </View>
+                    </View>
+                </Modal>
+                
+                <ScrollView>
+                
+                    <View style = {styles.line}></View>
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity
+                            onPress={()=> setModalVisible(true)}
+                            style={styles.settingsButton}>
                             <IonIcon
-                            name="person-outline"
-                            size={20}
-                            color={ 'black'}
-                            style = {{paddingHorizontal: 5}}
-                            />
-                        <Text style={styles.buttonText}>Details</Text>    
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={()=> console.warn("Second button")}
-                        style={styles.settingsButton}>
-                            <IonIcon
-                            name="chatbox-ellipses-outline"
-                            size={20}
-                            color={ 'black'}
-                            style = {{paddingHorizontal: 5}}
-                            />
-                        <Text style={styles.buttonText}>Support Chat</Text>    
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={()=> console.warn("Second button")}
-                        style={styles.settingsButton}>
-                            <IonIcon
-                            name="log-out-outline"
-                            size={20}
-                            color={ 'black'}
-                            style = {{paddingHorizontal: 5}}
-                            />
-                        <Text style={styles.buttonText}>Sign Out</Text>    
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
+                                name="cash-outline"
+                                size={20}
+                                color={ 'black'}
+                                style = {{paddingHorizontal: 5}}
+                                />
+                            <Text style={styles.buttonText}>Currency</Text>    
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={()=> console.warn("Hello")}
+                            style={styles.settingsButton}>
+                                <IonIcon
+                                name="person-outline"
+                                size={20}
+                                color={ 'black'}
+                                style = {{paddingHorizontal: 5}}
+                                />
+                            <Text style={styles.buttonText}>Details</Text>    
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={()=> console.warn("Second button")}
+                            style={styles.settingsButton}>
+                                <IonIcon
+                                name="chatbox-ellipses-outline"
+                                size={20}
+                                color={ 'black'}
+                                style = {{paddingHorizontal: 5}}
+                                />
+                            <Text style={styles.buttonText}>Support Chat</Text>    
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={handleSignOut}
+                            style={styles.settingsButton}>
+                                <IonIcon
+                                name="log-out-outline"
+                                size={20}
+                                color={ 'black'}
+                                style = {{paddingHorizontal: 5}}
+                                />
+                            <Text style={styles.buttonText}>Sign Out</Text>    
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView>
+                
+                
+                
+            <View style={styles.actionButton}>
+                <TabButton/>
+            </View>
         </LinearGradient>
     )
 }
@@ -106,6 +124,11 @@ const Settings = () => {
 export default Settings
 
 const styles = StyleSheet.create({
+    actionButton: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
 
     background: {
         position: 'absolute',

@@ -14,17 +14,6 @@ import Budget from './screens/Budget';
 import {FontAwesome5} from '@expo/vector-icons'
 
 
-
-import {
-  AnimatedTabBarNavigator,
-  DotSize, // optional
-  TabElementDisplayOptions, // optional
-  TabButtonLayout, // optional
-  IAppearanceOptions // optional
-} from 'react-native-animated-nav-tab-bar'
-import TabButton from './components/TabButton/TabButton';
-
-
 const Stack = createNativeStackNavigator()
 const Tab  = createBottomTabNavigator()
 
@@ -42,6 +31,7 @@ export const SignedOutStack = () => (
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen}/>
         <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="Signup" component={Signup}/>
+        
 
         </Stack.Navigator>
     </NavigationContainer>
@@ -138,6 +128,7 @@ export const SignedInStack = () =>(
             }}/>
 
         </Tab.Navigator>
+       
     </NavigationContainer>
 )
 
