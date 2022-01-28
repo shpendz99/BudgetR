@@ -76,6 +76,7 @@ const onRegisterPressed = () =>{
                         setValue={setPassword}
                         secureTextEntry={true}
                         />
+                        
                     <CustomInput 
                     placeholder="Confirm Password" 
                     value = {passwordRepeat} 
@@ -86,6 +87,7 @@ const onRegisterPressed = () =>{
                     <CustomButton 
                         text= "Register" 
                         onPress={onRegisterPressed} 
+                        type = "SECONDARY"
                         />
 
                     <Text style={styles.text}>

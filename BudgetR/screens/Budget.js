@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, ScrollView , SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import AccountBalance from '../components/TopHeader/AccountBalance';
+import BudgetButton from '../components/BudgetComponent/BudgetButton';
 
 const Budget = () => {
     return (
@@ -15,7 +16,9 @@ const Budget = () => {
                 <View style = {styles.line}></View>
                 
             </ScrollView>
-            
+            <View style={styles.actionButton}>
+                <BudgetButton/>
+            </View>
         </LinearGradient>
     )
 }
@@ -36,6 +39,13 @@ const styles = StyleSheet.create({
         top: 0,
         height: '100%',
       },
+      actionButton: {
+        // flex: 1,
+        marginBottom:90,
+        paddingBottom: 100,
+        alignItems: 'center',
+        justifyContent: 'center'
+        },
       line:{
         height: 1,
         backgroundColor: '#fff',

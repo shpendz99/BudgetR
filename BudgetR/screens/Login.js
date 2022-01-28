@@ -82,6 +82,7 @@ const Login = ({}) => {
                         <CustomButton 
                             text= "Log In" 
                             onPress={onSignInPressed} 
+                            
                             />
 
                         <CustomButton 

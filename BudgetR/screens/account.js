@@ -3,7 +3,6 @@ import { StyleSheet, Text, SafeAreaView, ScrollView, View } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import AccountBalance from '../components/TopHeader/AccountBalance';
 
-
 const Account = () => {
     return (
         <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
@@ -16,6 +15,7 @@ const Account = () => {
                 <View style = {styles.line}></View>
                 
             </ScrollView>
+            
             
         </LinearGradient>
     )

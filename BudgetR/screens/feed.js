@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, SafeAreaView, ScrollView  } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import AccountBalance from '../components/TopHeader/AccountBalance';
-
+import TabButton from '../components/BottomFooter/TabButton';
 const Feed = () => {
     return (
         <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
@@ -14,6 +14,9 @@ const Feed = () => {
                 <View style = {styles.line}></View>
                 
             </ScrollView>
+            <View style={styles.actionButton}>
+                <TabButton/>
+            </View>
             
         </LinearGradient>
     )
@@ -28,6 +31,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    
+    actionButton: {
+        // flex: 1,
+        marginBottom:90,
+        paddingBottom: 100,
+        alignItems: 'center',
+        justifyContent: 'center'
+        },
     background: {
         position: 'absolute',
         left: 0,

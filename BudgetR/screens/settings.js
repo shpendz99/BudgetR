@@ -114,9 +114,7 @@ const Settings = () => {
                 
                 
                 
-            <View style={styles.actionButton}>
-                <TabButton/>
-            </View>
+            
         </LinearGradient>
     )
 }
@@ -124,11 +122,7 @@ const Settings = () => {
 export default Settings
 
 const styles = StyleSheet.create({
-    actionButton: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
+
 
     background: {
         position: 'absolute',
