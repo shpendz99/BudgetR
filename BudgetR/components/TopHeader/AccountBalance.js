@@ -1,8 +1,63 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { auth, db } from '../../firebase'
 
 
 const AccountBalance = () => {
+    
+    //1 Use useState to set Account balance
+    //2 Read the --Doc--account (field)
+    //3 Update the use state
+    // const getUser = () =>{
+    //     const user = auth.currentUser
+    //     const unsubscribe = db
+    //         .collection('users')
+    //         .where('email', '==', user.email).limit(1).onSnapshot(
+    //             snapshot => snapshot.docs.map(doc =>{
+    //                 setUser({
+    //                     username: doc.data().username
+    //                 })
+    //             })
+    //         )
+    //     return unsubscribe
+        
+    // }
+
+    const [user, setUser] = useState(null);
+
+
+    const getUser = async() =>{
+        
+        try {
+            const documentSnapshot = await db
+              .collection('users')
+              .doc('Test@gmail.com')
+              .get();
+  
+            const userData = documentSnapshot.data().account;
+                setUser(userData)
+
+          } catch {
+            //do whatever
+          }
+        
+    }
+
+    // Get user on mount
+    useEffect(() => {
+        getUser();
+    }, []);
+
+
+
+    // const [account, setAccount] = useState('0')
+    // db.collection('users').get('account')
+    //     .then(snapshot => setAccount(snapshot.data()))
+    
+    // console.log(account)
+
+                
+
     return (
         <View style= {[styles.container, styles.shadowProp]}>
             <View style = {styles.viewBalance}>
@@ -10,7 +65,8 @@ const AccountBalance = () => {
  
             </View>
             <View>
-                <Text style = {styles.balance}> $3,590</Text>
+                <Text style = {styles.balance}> £{user}</Text>
+                <Text></Text>
             </View>
             
         </View>

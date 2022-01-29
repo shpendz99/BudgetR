@@ -4,6 +4,9 @@ import {auth} from './firebase'
 
 const AuthNavigation = () => {
 
+
+
+
     const [currentUser, setCurrentUser] = useState(null)
 
     //Checks if the user exists

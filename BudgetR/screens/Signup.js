@@ -7,6 +7,7 @@ import {auth, db} from '../firebase';
 
 
 
+
 const Signup = ({}) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -15,23 +16,25 @@ const Signup = ({}) => {
 
 
 
-const onRegisterPressed = () =>{
-    try{
-        auth.createUserWithEmailAndPassword(email, password)
+    const onRegisterPressed = (navigation) =>{
+        try{
+            auth.createUserWithEmailAndPassword(email, password)
 
-        db.collection('users').add({
-            username: username,
-            email: email,
-            password: password,
-            account : 0
-        })
+            db.collection('users')
+                .doc(email)
+                .set({
+                    username: username,
+                    email: email,
+                    password: password,
+                    account : 0
+            })
+
         
+        }catch(error){
 
-
-    }catch(error){
-        Alert.alert("Error! User already exists.")
+            Alert.alert("Error! User already exists.")
+        }
     }
-}
 
 
 
