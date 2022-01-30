@@ -27,15 +27,18 @@ const AccountBalance = () => {
 
 
     const getUser = async() =>{
-        
+
         try {
+            const Username = await auth.currentUser.email
+            console.log(Username)
             const documentSnapshot = await db
               .collection('users')
-              .doc('Test@gmail.com')
+              .doc(Username)
               .get();
   
             const userData = documentSnapshot.data().account;
                 setUser(userData)
+                
 
           } catch {
             //do whatever

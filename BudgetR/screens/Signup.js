@@ -72,6 +72,7 @@ const Signup = ({}) => {
                         placeholder="Email" 
                         value = {email} 
                         setValue={setEmail}
+                        autoCapitalize={'none'}
                         />
                     <CustomInput 
                         placeholder="Password" 
