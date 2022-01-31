@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView  } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import AccountBalance from '../components/TopHeader/AccountBalance';
 import TabButton from '../components/BottomFooter/TabButton';
+import ViewFeed from '../components/FeedComponent/ViewFeed';
+
 const Feed = () => {
     return (
         <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
@@ -12,6 +14,7 @@ const Feed = () => {
                 </SafeAreaView>
             <ScrollView>
                 <View style = {styles.line}></View>
+                <ViewFeed/>
                 
             </ScrollView>
             <View style={styles.actionButton}>
