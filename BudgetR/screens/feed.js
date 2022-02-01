@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView, ScrollView  } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, TouchableWithoutFeedback, Keyboard   } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import AccountBalance from '../components/TopHeader/AccountBalance';
 import TabButton from '../components/BottomFooter/TabButton';
@@ -7,21 +7,23 @@ import ViewFeed from '../components/FeedComponent/ViewFeed';
 
 const Feed = () => {
     return (
-        <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
-            <SafeAreaView>
-                    <AccountBalance/>
-                   
-                </SafeAreaView>
-            <ScrollView>
-                <View style = {styles.line}></View>
-                <ViewFeed/>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss()}>
+            <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
+                <SafeAreaView >
+                        <AccountBalance/>
+                    
+                    </SafeAreaView>
+                <ScrollView>
+                    <View style = {styles.line}></View>
+                    <ViewFeed/>
+                    
+                </ScrollView>
+                <View style={styles.actionButton}>
+                    <TabButton/>
+                </View>
                 
-            </ScrollView>
-            <View style={styles.actionButton}>
-                <TabButton/>
-            </View>
-            
-        </LinearGradient>
+            </LinearGradient>
+        </TouchableWithoutFeedback>
     )
 }
 

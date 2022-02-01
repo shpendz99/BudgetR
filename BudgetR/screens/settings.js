@@ -5,7 +5,7 @@ import AccountBalance from '../components/TopHeader/AccountBalance';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import {auth} from '../firebase'
-import TabButton from '../components/BottomFooter/TabButton';
+
 
 
 const Settings = () => {

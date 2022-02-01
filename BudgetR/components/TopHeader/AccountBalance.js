@@ -30,7 +30,7 @@ const AccountBalance = () => {
 
         try {
             const Username = await auth.currentUser.email
-            console.log(Username)
+            console.log('Authenticated Email: ', Username)
             const documentSnapshot = await db
               .collection('users')
               .doc(Username)

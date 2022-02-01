@@ -11,13 +11,16 @@ const CustomButton = ({ onPress, text, type = "PRIMARY", bgColor, fgColor}) => {
                 styles[`container_${type}`],
                 bgColor ? {backgroundColor : bgColor} : {}
                 ]}>
+
             
             <Text 
                 style={[
                     styles.text, 
                     styles[`text_${type}`],
                     fgColor ? { color: fgColor} : {},
-                    ]}>{text}</Text>
+                    ]}>{text}
+            </Text>
+            
         </TouchableOpacity>
     )
 }
@@ -113,13 +116,9 @@ const styles = StyleSheet.create({
     text_BUDGET:{
         color: 'white',
         fontWeight: '500',
-        fontSize: 14,
-        
-        
-    }
-
-
-
+        fontSize: 14,   
+    },
+   
 })
 
 
