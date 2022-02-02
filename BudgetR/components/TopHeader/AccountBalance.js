@@ -23,10 +23,10 @@ const AccountBalance = () => {
         
     // }
 
-    const [user, setUser] = useState(null);
+    const [balance, setBalance] = useState(null);
 
 
-    const getUser = async() =>{
+    const getBalance = async() =>{
 
         try {
             const Username = await auth.currentUser.email
@@ -36,10 +36,9 @@ const AccountBalance = () => {
               .doc(Username)
               .get();
   
-            const userData = documentSnapshot.data().account;
-                setUser(userData)
+            const userData = documentSnapshot.data().account_balance;
+                setBalance(userData)
                 
-
           } catch {
             //do whatever
           }
@@ -48,7 +47,7 @@ const AccountBalance = () => {
 
     // Get user on mount
     useEffect(() => {
-        getUser();
+        getBalance();
     }, []);
 
 
@@ -68,7 +67,7 @@ const AccountBalance = () => {
  
             </View>
             <View>
-                <Text style = {styles.balance}> £{user}</Text>
+                <Text style = {styles.balance}> £{balance}</Text>
                 <Text></Text>
             </View>
             

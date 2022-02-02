@@ -12,26 +12,32 @@ const Signup = ({}) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [passwordRepeat, setPasswordRepeat] = useState('');
+    const [name, setName] = useState('');
 
 
 
     const onRegisterPressed = (navigation) =>{
         try{
-            auth.createUserWithEmailAndPassword(email, password)
+            if(name == "" || username == "" || email == "" || password == ""){
+                Alert.alert("Error", "Please Provide all of the necessary data in order to Register")
+            }else if(password.length <= 6) {
+                Alert.alert("Error", "Please make sure the password is more than 6 Characters long!")
+            }else{
+                auth.createUserWithEmailAndPassword(email, password)
 
-            db.collection('users')
-                .doc(email)
-                .set({
-                    username: username,
-                    email: email,
-                    password: password,
-                    account : 0
-            })
-
+                db.collection('users')
+                    .doc(email)
+                    .set({
+                        name: name,
+                        username: username,
+                        email: email,
+                        password: password,
+                        account_balance: '0',
+                        budget: '0'
+                })
+            }
         
         }catch(error){
-
             Alert.alert("Error! User already exists.")
         }
     }
@@ -64,6 +70,11 @@ const Signup = ({}) => {
                     </View>
                     <Text style={styles.title}>Create an Account</Text>
                     <CustomInput 
+                        placeholder="Name" 
+                        value = {name} 
+                        setValue={setName}
+                        />
+                    <CustomInput 
                         placeholder="Username" 
                         value = {username} 
                         setValue={setUsername}
@@ -81,12 +92,6 @@ const Signup = ({}) => {
                         secureTextEntry={true}
                         />
                         
-                    <CustomInput 
-                    placeholder="Confirm Password" 
-                    value = {passwordRepeat} 
-                    setValue={setPasswordRepeat}
-                    secureTextEntry={true}
-                        />
                     
                     <CustomButton 
                         text= "Register" 

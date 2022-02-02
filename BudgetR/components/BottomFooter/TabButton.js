@@ -6,11 +6,16 @@ import CustomInput from '../CustomInput';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 
+
 const TabButton = () => {
     const [income, setIncome] = useState('');
     const [typeOfIncome, setTypeOfIncome] = useState('');
+    const [expense, setExpense] = useState('');
+    const [typeOfExpense, setTypeOfExpense] = useState('');
+
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [expenseModalVisible, setExpenseModalVisible] = useState(false);
 
    
 
@@ -22,21 +27,41 @@ const TabButton = () => {
             db
               .collection('users')
               .doc(auth.currentUser.email)
-              .collection('Account')
+              .collection('transaction')
               .add({
                 income: income,
                 typeOfIncome: typeOfIncome
               })  
               setModalVisible(!modalVisible)
+            
           }
-
           
-
-      
       }catch(error){
 
-          Alert.alert("Error! User already exists.")
+          Alert.alert("Error!")
       }
+  }
+
+
+  const onAddExpense = () =>{
+    try{
+      if(expense == "" || typeOfExpense == ""){
+        Alert.alert("Error", "Please enter values above!")
+      }else{
+        db
+          .collection('users')
+          .doc(auth.currentUser.email)
+          .collection('transaction')
+          .add({
+            expense: expense,
+            typeOfExpense: typeOfExpense
+          })  
+          setExpenseModalVisible(!expenseModalVisible)
+      }
+    }catch(error){
+
+        Alert.alert("Error!")
+    }
   }
 
 
@@ -97,6 +122,62 @@ const TabButton = () => {
               </View>
             </View>
           </Modal>
+
+          {/* Modal for adding Expense
+          //
+          //
+          */}
+          <Modal
+              animationType="slide"
+              transparent={true}
+              visible={expenseModalVisible}
+              onRequestClose={() => {
+              Alert.alert("Modal has been closed.");
+              setExpenseModalVisible(!expenseModalVisible);
+              }}
+          >
+            
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                
+                <CustomInput
+                  placeholder="E.g. 500"
+                  defaultValue = {expense} 
+                  setValue={setExpense}
+                  keyboardType = 'default'
+                  // keyboardType = 'decimal-pad'
+                  autoFocus = {true}
+                />
+                <CustomInput
+                  placeholder="E.g. Rent, Utility Bills. "
+                  value = {typeOfExpense} 
+                  setValue={setTypeOfExpense}
+                  keyboardType = 'default'
+                  autoFocus = {true}
+                />
+                <View style={styles.buttons}> 
+                  <CustomButton 
+                    text= "Add Expense" 
+                    onPress={() => {
+                      onAddExpense();
+                    }}
+                    type= "EXPENSE"
+                  />
+                  <TouchableOpacity style = {styles.closeButton} onPress={() => {
+                      setExpenseModalVisible(!expenseModalVisible);}}>
+                    <IonIcon
+                                name="close-circle-outline"
+                                size={28}
+                                color={ 'white'}
+                                style = {{marginHorizontal: 13,marginVertical: 13 }}
+                                />
+                  </TouchableOpacity>
+                  
+                </View>
+                      
+              </View>
+            </View>
+          </Modal>
           
               
           <CustomButton 
@@ -107,6 +188,7 @@ const TabButton = () => {
 
           <CustomButton 
             text= "Add Expense" 
+            onPress={()=> setExpenseModalVisible(true)}
             type= "EXPENSE"
             
           />
@@ -189,20 +271,3 @@ modalView: {
     
 })
 
-
-    // const translation = useRef(new Animated.Value(0)).current;
-    // const income = useRef(new Animated.Value(0)).current;
-    // const expense = useRef(new Animated.Value(0)).current;
-
-    // const main =()=>{
-    //   Animated.timing(income, {
-    //     toValue: -100,
-    //     duration: 500,
-    //     useNativeDriver: true,
-    //   }).start();
-    //   Animated.timing(expense, {
-    //     toValue: 100,
-    //     duration: 500,
-    //     useNativeDriver: true,
-    //   }).start();
-    // }
