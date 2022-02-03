@@ -13,12 +13,38 @@ const TabButton = () => {
     const [expense, setExpense] = useState('');
     const [typeOfExpense, setTypeOfExpense] = useState('');
 
+    const [balance,setBalance] = useState()
 
     const [modalVisible, setModalVisible] = useState(false);
     const [expenseModalVisible, setExpenseModalVisible] = useState(false);
 
-   
 
+
+    // Get user on mount
+    useEffect(() => {
+      getBalance();
+    });
+  
+    const getBalance = async() =>{
+      try {
+        const Username = await auth.currentUser.email
+        console.log('Authenticated Email: ', Username)
+        const documentSnapshot = await db
+          .collection('users')
+          .doc(Username)
+          .get();
+
+        const userData = documentSnapshot.data().account_balance;
+            setBalance(userData)
+            
+      } catch {
+        //do whatever
+      }
+    
+    }
+
+ 
+    //Will add Income transaction to Firestore
     const onAddIncome = () =>{
       try{
           if(income =="" || typeOfIncome == ""){
@@ -29,11 +55,12 @@ const TabButton = () => {
               .doc(auth.currentUser.email)
               .collection('transaction')
               .add({
-                income: income,
+                income: parseInt(income),
                 typeOfIncome: typeOfIncome
               })  
+              
               setModalVisible(!modalVisible)
-            
+              addToBalance();
           }
           
       }catch(error){
@@ -41,8 +68,23 @@ const TabButton = () => {
           Alert.alert("Error!")
       }
   }
-
-
+  //Updates the user's Balance after they have entered their income
+  //Grabs the user's balance
+  //Adds the user's balance with the income they have entered
+  //Updates the user's balance after
+  const addToBalance = async() =>{
+    const updatedIncomeBalance = (parseFloat(balance)+parseFloat(income))
+    console.log("Updated Balance: ", updatedIncomeBalance)
+    await db
+            .collection('users')
+            .doc(auth.currentUser.email)
+            .update({
+              account_balance: updatedIncomeBalance
+            })
+            
+  }
+  
+  //Will add Income transaction to Firestore
   const onAddExpense = () =>{
     try{
       if(expense == "" || typeOfExpense == ""){
@@ -53,15 +95,34 @@ const TabButton = () => {
           .doc(auth.currentUser.email)
           .collection('transaction')
           .add({
-            expense: expense,
+            expense: parseInt(expense),
             typeOfExpense: typeOfExpense
           })  
+          
           setExpenseModalVisible(!expenseModalVisible)
+          subToBalance();
       }
     }catch(error){
 
         Alert.alert("Error!")
     }
+  }
+
+
+  //Updates the user's Balance after they have entered their expense
+  //Grabs the user's balance
+  //Adds the user's balance with the expense they have entered
+  //Updates the user's balance after
+  const subToBalance = async() =>{
+    const updatedExpenseBalance = (parseFloat(balance)-parseFloat(expense))
+    console.log("Updated Balance: ", updatedExpenseBalance)
+    await db
+      .collection('users')
+      .doc(auth.currentUser.email)
+      .update({
+        account_balance: updatedExpenseBalance
+    })
+    //
   }
 
 
@@ -93,7 +154,7 @@ const TabButton = () => {
                   autoFocus = {true}
                 />
                 <CustomInput
-                  placeholder="E.g. Rent, Utility Bills. "
+                  placeholder="E.g. Work, Gift, etc. "
                   value = {typeOfIncome} 
                   setValue={setTypeOfIncome}
                   keyboardType = 'default'

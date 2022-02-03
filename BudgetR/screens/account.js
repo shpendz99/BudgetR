@@ -6,11 +6,11 @@ import AccountBalance from '../components/TopHeader/AccountBalance';
 const Account = () => {
     return (
         <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
-            <SafeAreaView style={styles.container}>
+            {/* <SafeAreaView style={styles.container}>
                 <AccountBalance/>
                         
                     
-            </SafeAreaView>
+            </SafeAreaView> */}
             <ScrollView>
                 <View style = {styles.line}></View>
                 

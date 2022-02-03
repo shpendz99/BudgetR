@@ -32,8 +32,8 @@ const Signup = ({}) => {
                         username: username,
                         email: email,
                         password: password,
-                        account_balance: '0',
-                        budget: '0'
+                        account_balance: 0,
+                        budget: 0
                 })
             }
         

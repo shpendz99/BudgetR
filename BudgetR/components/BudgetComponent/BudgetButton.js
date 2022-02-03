@@ -1,33 +1,64 @@
 import { StyleSheet, Text, View, Modal, TouchableOpacity, Alert } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CustomButton from '../CustomButton';
 import CustomInput from '../CustomInput';
 import IonIcon from 'react-native-vector-icons/Ionicons';
+import { db } from '../../firebase';
 
 const BudgetButton = () => {
   
-    const [budget, setBudget] = useState('');
+    const [userBudget, setUserBudget] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
+
+
+    useEffect(() => {
+      getBudget();
+    });
+  
+    const getBudget = async() =>{
+      try {
+        const Username = await auth.currentUser.email
+        console.log('Authenticated Email: ', Username)
+        const documentSnapshot = await db
+          .collection('users')
+          .doc(Username)
+          .get();
+
+        const userData = documentSnapshot.data().budget;
+          setUserBudget(userData)
+            
+      } catch {
+        //do whatever
+      }
+    
+    }
+
 
     const onSetBudget = () =>{
       try{
-          if(budget == ""){
+        
+          if(userBudget == ""){
             Alert.alert("Error", "Please enter your Budget!")
+
           }else{
             //if statement
             // -- check if user has set budget
-
-            console.warn("You have set Budget of: ", budget)
-            setModalVisible(!modalVisible)
+            // if(userData == 0){
+            //   console.log("Budget is set to 0 atm")
+            // }
+            // else{
             // db
             //   .collection('users')
             //   .doc(auth.currentUser.email)
-            //   .collection('Balance')
-            //   .add({
-            //     income: income,
-            //     typeOfIncome: typeOfIncome
-            //   })  
-            //   setModalVisible(!modalVisible)
+            //   .update({
+            //     budget: userBudget
+            // })
+            // }
+      
+
+            console.warn("You have set Budget of: ", userBudget)
+            setModalVisible(!modalVisible)
+            
           }
       }catch(error){
 
@@ -51,9 +82,9 @@ const BudgetButton = () => {
                     
                     <CustomInput 
                     placeholder="E.g. 500"
-                    value = {budget} 
+                    value = {userBudget} 
                     onChangeText = {text =>setBudget(text)}
-                    setValue={setBudget}
+                    setValue={setUserBudget}
                     autoCapitalize = 'none'
                     keyboardType = "budget"
                     textContentType = 'budget'

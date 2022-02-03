@@ -5,35 +5,18 @@ import { auth, db } from '../../firebase'
 
 const AccountBalance = () => {
     
-    //1 Use useState to set Account balance
-    //2 Read the --Doc--account (field)
-    //3 Update the use state
-    // const getUser = () =>{
-    //     const user = auth.currentUser
-    //     const unsubscribe = db
-    //         .collection('users')
-    //         .where('email', '==', user.email).limit(1).onSnapshot(
-    //             snapshot => snapshot.docs.map(doc =>{
-    //                 setUser({
-    //                     username: doc.data().username
-    //                 })
-    //             })
-    //         )
-    //     return unsubscribe
-        
-    // }
 
-    const [balance, setBalance] = useState(null);
+    const [balance, setBalance] = useState();
 
 
     const getBalance = async() =>{
 
         try {
-            const Username = await auth.currentUser.email
+            const Username =  await auth.currentUser.email
             console.log('Authenticated Email: ', Username)
             const documentSnapshot = await db
               .collection('users')
-              .doc(Username)
+              .doc(Username) 
               .get();
   
             const userData = documentSnapshot.data().account_balance;
@@ -48,7 +31,7 @@ const AccountBalance = () => {
     // Get user on mount
     useEffect(() => {
         getBalance();
-    }, []);
+    });
 
 
 

@@ -14,6 +14,7 @@ import Budget from './screens/Budget';
 import {FontAwesome5} from '@expo/vector-icons'
 
 
+
 const Stack = createNativeStackNavigator()
 const Tab  = createBottomTabNavigator()
 
