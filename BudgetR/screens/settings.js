@@ -24,7 +24,7 @@ const Settings = () => {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
-        <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
+        <View style= {{flex: 1}}>
             
                 <SafeAreaView>
                         <AccountBalance/>
@@ -112,10 +112,10 @@ const Settings = () => {
                     </View>
                 </ScrollView>
                 
-                
+            </View>  
                 
             
-        </LinearGradient>
+        
     )
 }
 
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     },
     line:{
         height: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#F2F2F2',
         borderRadius: 100,
         marginHorizontal: 20,  
     },
@@ -145,13 +145,14 @@ const styles = StyleSheet.create({
     },
 
     settingsButton:{
-        backgroundColor: "#F2F2F2",
+        backgroundColor: "white",
         width: 350,
         padding: 15,
         marginVertical: 7,
         borderRadius: 5,
         alignItems: 'flex-start',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        
 
     },
     currencyButton:{

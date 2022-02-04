@@ -59,9 +59,9 @@ export const SignedInStack = () =>(
                     elevation: 5,
                     // Shadow...
                     shadowColor: '#000',
-                    shadowOpacity: 0.75,
-                    shadowRadius: 5,
-                    shadowOffset: {width: 0, height: 4}
+                    shadowOpacity: 0.25,
+                    shadowRadius: 2,
+                    shadowOffset: {width: 0, height: 3}
                 }
 
             }}
@@ -105,7 +105,7 @@ export const SignedInStack = () =>(
                         top: 20
                       }}>
                         <FontAwesome5
-                          name="chart-pie"
+                          name="comment"
                           size={20}
                           color={focused ? '#5D9EFF' : 'gray'}
                         ></FontAwesome5>

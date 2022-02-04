@@ -6,7 +6,7 @@ import BudgetButton from '../components/BudgetComponent/BudgetButton';
 
 const Budget = () => {
     return (
-        <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
+        <View style = {{flex: 1}}>
             <SafeAreaView style={styles.container}>
                 <AccountBalance/>
                         
@@ -19,7 +19,7 @@ const Budget = () => {
             <View style={styles.actionButton}>
                 <BudgetButton/>
             </View>
-        </LinearGradient>
+        </View>
     )
 }
 

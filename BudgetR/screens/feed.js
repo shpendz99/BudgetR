@@ -7,8 +7,9 @@ import ViewFeed from '../components/FeedComponent/ViewFeed';
 
 const Feed = () => {
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss()}>
-            <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
+        // <TouchableWithoutFeedback onPress={Keyboard.dismiss()}>
+            
+            <View style= {{flex: 1}}>
                 <SafeAreaView >
                         <AccountBalance/>
                     
@@ -21,9 +22,9 @@ const Feed = () => {
                 <View style={styles.actionButton}>
                     <TabButton/>
                 </View>
-                
-            </LinearGradient>
-        </TouchableWithoutFeedback>
+            </View>
+        
+        // </TouchableWithoutFeedback>
     )
 }
 

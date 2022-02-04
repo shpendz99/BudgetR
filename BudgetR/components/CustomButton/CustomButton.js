@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Pressable } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 
@@ -9,7 +9,7 @@ const CustomButton = ({ onPress, text, type = "PRIMARY", bgColor, fgColor}) => {
             style={[
                 styles.container, 
                 styles[`container_${type}`],
-                bgColor ? {backgroundColor : bgColor} : {}
+                bgColor ? {backgroundColor : bgColor} : {},
                 ]}>
 
             
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         width: 290,
         shadowOffset: {width: 0, height:4},
-        shadowOpacity: 0.1,
+        shadowOpacity: 0.2,
         shadowRadius: 5,
         elevation: 5
     },
@@ -70,31 +70,33 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
     },
+    //Income Button
     container_INCOME:{
         backgroundColor: '#3b71f3',
         marginVertical: 10,
         marginHorizontal:10,
         shadowColor: 'gray',
         width: 145,
-        shadowOffset: {width: 0, height: 4},
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
-        elevation: 5
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.15,
+        shadowRadius: 3,
+        
     },
     text_INCOME:{
         color: 'white',
         fontWeight: '500',
         fontSize: 14,
     },
+    // EXPENSE Button
     container_EXPENSE:{
         backgroundColor: '#F58684',
         marginHorizontal:10,
         shadowColor: 'gray',
         width: 145,
-        shadowOffset: {width: 0, height: 4},
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
-        elevation: 2
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.15,
+        shadowRadius: 3,
+        
     },
     text_EXPENSE:{
         color: 'white',
@@ -103,15 +105,15 @@ const styles = StyleSheet.create({
         
         
     },
+    //Budget Button
     container_BUDGET:{
         backgroundColor: '#A3ACFA',
         marginHorizontal:10,
         shadowColor: 'gray',
         width: 145,
-        shadowOffset: {width: 0, height: 4},
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
-        elevation: 2
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.15,
+        shadowRadius: 3,
     },
     text_BUDGET:{
         color: 'white',

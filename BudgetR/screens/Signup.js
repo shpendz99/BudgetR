@@ -59,7 +59,7 @@ const Signup = ({}) => {
 
 
     return (
-        <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
+        
             <ScrollView>
              
                 <SafeAreaView style={styles.container}>
@@ -114,7 +114,7 @@ const Signup = ({}) => {
                 </SafeAreaView>
             </ScrollView>
             
-        </LinearGradient>
+        
 
     )
 }

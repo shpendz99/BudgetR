@@ -15,7 +15,7 @@ const WelcomeScreen = ({navigation}) => {
     }
 
     return (
-        <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
+        
             <ScrollView>
              
                 <View style={styles.container}>
@@ -40,7 +40,7 @@ const WelcomeScreen = ({navigation}) => {
                 </View>
             </ScrollView>
             
-        </LinearGradient>
+        
     )
 }
 

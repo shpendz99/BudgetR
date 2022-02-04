@@ -3,10 +3,11 @@ import React, {useState, useEffect} from 'react';
 import CustomButton from '../CustomButton';
 import CustomInput from '../CustomInput';
 import IonIcon from 'react-native-vector-icons/Ionicons';
-import { db } from '../../firebase';
+import { db, auth } from '../../firebase';
 
 const BudgetButton = () => {
   
+    const [dbBudget, setDbBudget] = useState('');
     const [userBudget, setUserBudget] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -24,8 +25,8 @@ const BudgetButton = () => {
           .doc(Username)
           .get();
 
-        const userData = documentSnapshot.data().budget;
-          setUserBudget(userData)
+        const userBudget = documentSnapshot.data().budget;
+          setDbBudget(userBudget)
             
       } catch {
         //do whatever
@@ -33,6 +34,9 @@ const BudgetButton = () => {
     
     }
 
+    //1 -if statement check if user entered something
+    //2 -else if user entered budget
+    //3 -- Add budget that the user has entered.
 
     const onSetBudget = () =>{
       try{
@@ -40,25 +44,18 @@ const BudgetButton = () => {
           if(userBudget == ""){
             Alert.alert("Error", "Please enter your Budget!")
 
-          }else{
-            //if statement
-            // -- check if user has set budget
-            // if(userData == 0){
-            //   console.log("Budget is set to 0 atm")
-            // }
-            // else{
-            // db
-            //   .collection('users')
-            //   .doc(auth.currentUser.email)
-            //   .update({
-            //     budget: userBudget
-            // })
-            // }
-      
-
-            console.warn("You have set Budget of: ", userBudget)
-            setModalVisible(!modalVisible)
             
+          }else{
+            const updatedBudget = (parseFloat(dbBudget)+parseFloat(userBudget))
+            console.log("Updated Balance: ", updatedBudget)
+            db
+              .collection('users')
+              .doc(auth.currentUser.email)
+              .update({
+                budget: updatedBudget
+              })
+        
+            setModalVisible(!modalVisible)
           }
       }catch(error){
 

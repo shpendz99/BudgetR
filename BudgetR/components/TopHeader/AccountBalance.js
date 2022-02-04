@@ -73,9 +73,9 @@ const styles = StyleSheet.create({
     },
     shadowProp:{
         shadowColor: '#171717',
-        shadowOffset: {width: -2, height: 4},
-        shadowOpacity: 0.75,
-        shadowRadius: 5,
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
     },
 
     viewBalance: {

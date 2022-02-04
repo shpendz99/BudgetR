@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet, View, Image, ScrollView } from 'react-native'
+import { StyleSheet, View, Image, ScrollView, KeyboardAvoidingView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -43,58 +43,62 @@ const Login = ({}) => {
     const onForgotPasswordPressed = () => {
         console.warn("Forgot password")
     }
-    const onSignInGooglePressed = () => {
-        console.warn("Sign Google")
-    }
+ 
 
     return (
-        <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
+        // <LinearGradient style={styles.background} colors={['#42275A', '#25455C', '#2B2D71']}>
             <ScrollView>
-             
-                <View style={styles.container}>
-                    
-                        <View style = {styles.img_container}>                    
-                            <Image style = {styles.img}
-                                source={require('../images/logo.png')}
-                            />
-                        </View>
-                        <CustomInput 
-                            placeholder="email"
-                            value = {email} 
-                            onChangeText = {text =>setEmail(text)}
-                            setValue={setEmail}
-                            autoCapitalize = 'none'
-                            keyboardType = "email-address"
-                            textContentType = 'emailAddress'
-                            autoFocus = {true}
-                            />
-                        <CustomInput 
-                            placeholder="Password" 
-                            value = {password} 
-                            onChangeText = {text =>setPassword(text)}
-                            setValue={setPassword}
-                            secureTextEntry={true}
-                            autoCapitalize = 'none'
-                            textContentType = 'password'
-                            autoFocus = {true}
-                            />
+                <KeyboardAvoidingView 
+                    style={{flex: 1}} 
+                    behavior={Platform.OS === 'ios' ? 'padding' : null}
+                >
+                
+                
+                    <View style={styles.container}>
                         
-                        <CustomButton 
-                            text= "Log In" 
-                            onPress={onSignInPressed} 
+                            <View style = {styles.img_container}>                    
+                                <Image style = {styles.img}
+                                    source={require('../images/logo.png')}
+                                />
+                            </View>
+                            <CustomInput 
+                                placeholder="email"
+                                value = {email} 
+                                onChangeText = {text =>setEmail(text)}
+                                setValue={setEmail}
+                                autoCapitalize = 'none'
+                                keyboardType = "email-address"
+                                textContentType = 'emailAddress'
+                                autoFocus = {true}
+                                />
+                            <CustomInput 
+                                placeholder="Password" 
+                                value = {password} 
+                                onChangeText = {text =>setPassword(text)}
+                                setValue={setPassword}
+                                secureTextEntry={true}
+                                autoCapitalize = 'none'
+                                textContentType = 'password'
+                                autoFocus = {true}
+                                />
                             
-                            />
+                            <CustomButton 
+                                text= "Log In" 
+                                onPress={onSignInPressed} 
+                                
+                                />
 
-                        <CustomButton 
-                            text= "Forgot Password?" 
-                            onPress={onForgotPasswordPressed} 
-                            type="TERTIARY"
-                            />
-                    
-                </View>
+                            <CustomButton 
+                                text= "Forgot Password?" 
+                                onPress={onForgotPasswordPressed} 
+                                type="TERTIARY"
+                                />
+                        
+                    </View>
+                </KeyboardAvoidingView>
             </ScrollView>
             
-        </LinearGradient>
+        // </LinearGradient>
 
     )
 }
@@ -107,6 +111,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    
     background: {
         position: 'absolute',
         left: 0,
