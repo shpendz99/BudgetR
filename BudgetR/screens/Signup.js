@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { StyleSheet, Text, ScrollView, SafeAreaView, Image, View, Alert } from 'react-native'
-import { LinearGradient } from 'expo-linear-gradient';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import {auth, db} from '../firebase';
@@ -8,7 +7,7 @@ import {auth, db} from '../firebase';
 
 
 
-const Signup = ({}) => {
+const Signup = ({navigation}) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +15,7 @@ const Signup = ({}) => {
 
 
 
-    const onRegisterPressed = (navigation) =>{
+    const onRegisterPressed = () =>{
         try{
             if(name == "" || username == "" || email == "" || password == ""){
                 Alert.alert("Error", "Please Provide all of the necessary data in order to Register")

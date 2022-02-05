@@ -8,7 +8,7 @@ try {
     var snapshot = await db
         .collection('users')
         .doc(auth.currentUser.email)
-        .collection('Account')
+        .collection('transaction')
         .get();
     snapshot.forEach((doc) =>{
         const user  = doc.data()
@@ -19,8 +19,8 @@ try {
     });
     
     FeedDataRetrieved(FeedList)
-    
-    } catch {
+
+} catch {
     //do whatever
     }
 

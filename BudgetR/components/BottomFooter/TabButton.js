@@ -45,18 +45,19 @@ const TabButton = () => {
 
  
     //Will add Income transaction to Firestore
-    const onAddIncome = () =>{
+    const onAddIncome = async() =>{
       try{
           if(income =="" || typeOfIncome == ""){
             Alert.alert("Error", "Please enter Income and the Type of Income..")
           }else{
-            db
+            await db
               .collection('users')
               .doc(auth.currentUser.email)
               .collection('transaction')
               .add({
-                income: parseInt(income),
-                typeOfIncome: typeOfIncome
+                money: parseInt(income),
+                type: 'Income',
+                transaction: typeOfIncome
               })  
               
               setModalVisible(!modalVisible)
@@ -68,6 +69,7 @@ const TabButton = () => {
           Alert.alert("Error!")
       }
   }
+
   //Updates the user's Balance after they have entered their income
   //Grabs the user's balance
   //Adds the user's balance with the income they have entered
@@ -85,18 +87,20 @@ const TabButton = () => {
   }
   
   //Will add Income transaction to Firestore
-  const onAddExpense = () =>{
+  const onAddExpense = async() =>{
     try{
       if(expense == "" || typeOfExpense == ""){
         Alert.alert("Error", "Please enter values above!")
       }else{
-        db
+        await db
           .collection('users')
           .doc(auth.currentUser.email)
           .collection('transaction')
-          .add({
-            expense: parseInt(expense),
-            typeOfExpense: typeOfExpense
+          .add({ 
+            money: -(parseInt(expense)),
+            type: 'Expense',
+            transaction: typeOfExpense,
+            // created: newExpenseDoc.Timestamp.now()
           })  
           
           setExpenseModalVisible(!expenseModalVisible)
