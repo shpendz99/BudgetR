@@ -28,9 +28,22 @@ const AccountBalance = () => {
         
     }
 
+    const updateBalance = () =>{
+        try {
+            db.collection('users').doc(auth.currentUser.email).onSnapshot(doc =>{
+                setBalance(doc.data().account_balance)
+            })
+        }catch{
+            Alert(Error)
+        }
+    }
+
     // Get user on mount
     useEffect(() => {
         getBalance();
+        updateBalance();
+        
+        
     });
 
 
