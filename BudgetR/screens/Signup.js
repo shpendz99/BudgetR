@@ -113,6 +113,8 @@ const Signup = ({navigation}) => {
                 </SafeAreaView>
             </ScrollView>
             
+        
+
     )
 }
 
