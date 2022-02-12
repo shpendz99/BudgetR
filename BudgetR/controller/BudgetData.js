@@ -24,58 +24,38 @@ export async function getBudget(BudgetData){
         })
         
         console.log("Budget User", auth.currentUser.email)
-
-        
-
-
-        
-        
     }catch{
         //do whatever
     }
 }
 
-
-
-
-// import {auth, db} from '../firebase'
-
+export async function getFeedData(FeedDataRetrieved){
     
-// export async function getBudget(BudgetData){
+
+    try {
+        var FeedList = [];
+        var snapshot = await db
+            .collection('users')
+            .doc(auth.currentUser.email)
+            .collection('transaction')
+            .where('type', '==', 'Expense')
+            .get();
+        snapshot.forEach((doc) =>{
+            const user  = doc.data().money
     
-//     try{
+            FeedList.push(user)
+            console.log("Ranom: ", user)
+            
+        });
         
-//         var userB;
-//         await db
-//         .collection('users')
-//         .doc(auth.currentUser.email)
-//         .get().then((doc) =>{
-//             const user  = doc.data().budget;
-//             userB = user
-        
-//         })
-
-//         //Updates the user's Budget
-//         db.collection('users').doc(auth.currentUser.email).onSnapshot(docUpdate =>{
-//             const updateBudget = docUpdate.data().budget;
-//             userB = updateBudget
-        
-
-//         //shows who is logged in at the moment
-//         console.log("Budget User", auth.currentUser.email)
-
-//         //this shares the value of this function with another function in a different class
-//         BudgetData(userB)
-
-        
-//         })
-        
-        
-        
-//     }catch{
-//         //do whatever
-//     }
-// }
+        FeedDataRetrieved(FeedList)
+    
+    } catch {
+        //do whatever
+        }
+    
+    }
+    
 
 
 
