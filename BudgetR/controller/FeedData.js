@@ -14,7 +14,7 @@ try {
         const user  = doc.data()
 
         FeedList.push(user)
-        console.log(user)
+        console.log("Transactions: ", user)
         
     });
     

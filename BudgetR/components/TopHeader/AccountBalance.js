@@ -20,7 +20,13 @@ const AccountBalance = () => {
               .get();
   
             const userData = documentSnapshot.data().account_balance;
-                setBalance(userData)
+                setBalance(userData);
+
+            //This checks the firestore for any updates
+            //when the balance is updated on firestore, it is also updated on the app
+            db.collection('users').doc(auth.currentUser.email).onSnapshot(doc =>{
+                setBalance(doc.data().account_balance)
+            })
                 
           } catch {
             //do whatever
@@ -28,20 +34,12 @@ const AccountBalance = () => {
         
     }
 
-    const updateBalance = () =>{
-        try {
-            db.collection('users').doc(auth.currentUser.email).onSnapshot(doc =>{
-                setBalance(doc.data().account_balance)
-            })
-        }catch{
-            Alert(Error)
-        }
-    }
+
 
     // Get user on mount
     useEffect(() => {
         getBalance();
-        updateBalance();
+        // updateBalance();
         
         
     });

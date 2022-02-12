@@ -10,16 +10,13 @@ const ViewFeed = () => {
     const [FeedList, setFeedList] = useState([])
 
     useEffect(()=>{
-        getFeed()
+      getFeedData(FeedDataRetrieved)
     },[]);
 
-    function getFeed(){
-        getFeedData(FeedDataRetrieved)
-    }
+
     function FeedDataRetrieved(FeedList){
         setFeedList(FeedList)
-        console.log()
-        
+        console.log() 
     }
 
 

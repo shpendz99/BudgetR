@@ -24,25 +24,40 @@ class ChatBot extends Component {
         messages: [
           {
             _id: 1,
-            text: `Hi! I am the FAQ bot 🤖 from Jscrambler.\n\nHow may I help you with today?`,
+            text: `Hi! I am the FAQ bot 🤖.\n\nHow may I help you with today?`,
             createdAt: new Date(),
             user: BOT_USER
           }
         ]
       };
+
+     
     
       componentDidMount() {
-        Dialogflow_V2.setConfiguration(
-          dialogflowConfig.client_email,
+        try{
+          Dialogflow_V2.setConfiguration(
+          dialogflowConfig.private_key_id,
           dialogflowConfig.private_key,
-          Dialogflow_V2.LANG_ENGLISH_US,
-          dialogflowConfig.project_id
+          dialogflowConfig.client_email,
+          dialogflowConfig.client_id,
+          dialogflowConfig.auth_uri,
+          dialogflowConfig.token_uri,
+          dialogflowConfig.auth_provider_x509_cert_url,
+          dialogflowConfig.client_x509_cert_url,
+          "103985160649803161950",Dialogflow_V2.LANG_ENGLISH_US,
         );
+        }catch(error){
+          console.log(error)
+        }
+        
       }
     
       handleGoogleResponse(result) {
+        console.warn(result)
         let text = result.queryResult.fulfillmentMessages[0].text.text[0];
         this.sendBotResponse(text);
+        
+        console.log("This is the Result")
       }
     
       onSend(messages = []) {
@@ -56,16 +71,18 @@ class ChatBot extends Component {
           result => this.handleGoogleResponse(result),
           error => console.log(error)
         );
+        
       }
     
       sendBotResponse(text) {
+        console.log("Number 2")
         let msg = {
           _id: this.state.messages.length + 1,
           text,
           createdAt: new Date(),
           user: BOT_USER
         };
-    
+        console.log("Number 3")
         this.setState(previousState => ({
           messages: GiftedChat.append(previousState.messages, [msg])
         }));
