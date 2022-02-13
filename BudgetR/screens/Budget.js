@@ -10,10 +10,10 @@ import { getFeedData } from '../controller/BudgetData';
 
 const Budget = () => {
     const [value, setValue] = useState(0);
-    const [budget, setBudget] = useState(null);
+    const [budget, setBudget] = useState(0);
     const [expensesFeed, setExpensesFeed] = useState([]);
-    const [percentage, setPercentage] = useState();
-    const [budgetLeft, setBudgetLeft] = useState();
+    const [percentage, setPercentage] = useState(0);
+    const [budgetLeft, setBudgetLeft] = useState(0);
     
 
     useEffect(()=>{
@@ -29,14 +29,17 @@ const Budget = () => {
    
     function FeedDataRetrieved(expensesFeed){
         try{
+            const b = budget;
             setExpensesFeed(expensesFeed)
             console.log(expensesFeed)
             // Calculates the sum of all expenses (all expenses in the array)
-            
-            const sum = (expensesFeed.reduce((result, number) => result+number))*-1
+            console.log("Test Budget: ",b)
+            const sum = ((expensesFeed.reduce((result, number) => result+number))*-1).toFixed(2)
             console.log(sum)
-            const budgetLeft = budget + sum
-            const percentage = (100 - (Math.round(( (sum) / budget ) * 100)))
+            const budgetLeft = (budget) - parseFloat(sum)
+            const percentage = ((Math.round(( (budgetLeft) / budget ) * 100)))
+            console.log(budgetLeft)
+            console.log("percent",percentage)
             setBudgetLeft(budgetLeft)
             setPercentage(percentage) 
             
@@ -69,6 +72,7 @@ const Budget = () => {
                     <CircularProgress 
                         radius={110}
                         value = {percentage}
+                        // value = {50}
                         textColor = {'black'}
                         valueSuffix = {'%'}
                         inActiveStrokeColor={'#A3ACFA'}
