@@ -71,8 +71,8 @@ const Budget = () => {
                     
                     <CircularProgress 
                         radius={110}
-                        value = {percentage}
-                        // value = {50}
+                        // value = {percentage}
+                        value = {50}
                         textColor = {'black'}
                         valueSuffix = {'%'}
                         inActiveStrokeColor={'#A3ACFA'}
