@@ -5,22 +5,13 @@ import { auth, db } from '../../firebase'
 
 const AccountBalance = () => {
     
-
-    const [balance, setBalance] = useState();
-
+    //stores Balance
+    const [balance, setBalance] = useState(0);
 
     const getBalance = async() =>{
-
         try {
             const Username =  await auth.currentUser.email
             console.log('Authenticated Email: ', Username)
-            const documentSnapshot = await db
-              .collection('users')
-              .doc(Username) 
-              .get();
-  
-            const userData = documentSnapshot.data().account_balance;
-                setBalance(userData);
 
             //This checks the firestore for any updates
             //when the balance is updated on firestore, it is also updated on the app
@@ -34,25 +25,11 @@ const AccountBalance = () => {
         
     }
 
-
-
-    // Get user on mount
     useEffect(() => {
         getBalance();
-        // updateBalance();
-        
-        
+   
     });
 
-
-
-    // const [account, setAccount] = useState('0')
-    // db.collection('users').get('account')
-    //     .then(snapshot => setAccount(snapshot.data()))
-    
-    // console.log(account)
-
-                
 
     return (
         <View style= {[styles.container, styles.shadowProp]}>

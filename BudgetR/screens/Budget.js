@@ -26,29 +26,28 @@ const Budget = () => {
         setBudget(budget)
     }
 
-   
+    //Collects all expenses reported!
+    //Computes the Remaining Budget (Text & Percentage)!
     function FeedDataRetrieved(expensesFeed){
         try{
-            const b = budget;
             setExpensesFeed(expensesFeed)
-            console.log(expensesFeed)
             // Calculates the sum of all expenses (all expenses in the array)
-            console.log("Test Budget: ",b)
             const sum = ((expensesFeed.reduce((result, number) => result+number))*-1).toFixed(2)
-            console.log(sum)
+            
+            //Calculates Remaining Budget (+percentage)
             const budgetLeft = (budget) - parseFloat(sum)
             const percentage = ((Math.round(( (budgetLeft) / budget ) * 100)))
-            console.log(budgetLeft)
-            console.log("percent",percentage)
+
             setBudgetLeft(budgetLeft)
             setPercentage(percentage) 
-            
-            
+            console.log("List of Expenses Reported: ",expensesFeed)
+            console.log("Total of Expenses: ",sum)
+            console.log("Signed in User Remaining Budget: ",budgetLeft)
+            console.log("Percentage of Remaining Budget Left: ",percentage)
 
         }catch{
             Alert.alert("Error", "Unable to fetch data!")
         }
-        
     }
 
     
@@ -71,8 +70,8 @@ const Budget = () => {
                     
                     <CircularProgress 
                         radius={110}
-                        // value = {percentage}
-                        value = {50}
+                        value = {percentage}
+                        // value = {50}
                         textColor = {'black'}
                         valueSuffix = {'%'}
                         inActiveStrokeColor={'#A3ACFA'}

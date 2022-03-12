@@ -33,7 +33,7 @@ const Login = ({}) => {
     //       const user = userCredential.user
         
         
-    //       console.log("Registered with:", user.email);
+    //       console.Íﬁlog("Registered with:", user.email);
     //     } catch (e) {
     //       console.log(e)
     //     }

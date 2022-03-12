@@ -11,7 +11,6 @@ const BudgetButton = () => {
     const [userBudget, setUserBudget] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
 
-
     useEffect(() => {
       getBudget();
     });
@@ -27,24 +26,16 @@ const BudgetButton = () => {
 
         const userBudget = documentSnapshot.data().budget;
           setDbBudget(userBudget)
-            
       } catch {
         //do whatever
       }
-    
     }
-
-    //1 -if statement check if user entered something
-    //2 -else if user entered budget
-    //3 -- Add budget that the user has entered.
 
     const onSetBudget = () =>{
       try{
-        
           if(userBudget == ""){
             Alert.alert("Error", "Please enter your Budget!")
 
-            
           }else{
             const updatedBudget = (parseFloat(dbBudget)+parseFloat(userBudget))
             console.log("Updated Balance: ", updatedBudget)
@@ -58,7 +49,6 @@ const BudgetButton = () => {
             setModalVisible(!modalVisible)
           }
       }catch(error){
-
           Alert.alert("Error!")
       }
     }

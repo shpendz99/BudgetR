@@ -61,6 +61,7 @@ const TabButton = () => {
               })  
               
               setModalVisible(!modalVisible)
+              //calls function to Add value to Account Balance
               addToBalance();
           }
           
@@ -100,14 +101,12 @@ const TabButton = () => {
             money: -(parseInt(expense)),
             type: 'Expense',
             transaction: typeOfExpense,
-            // created: newExpenseDoc.Timestamp.now()
           })  
-          
           setExpenseModalVisible(!expenseModalVisible)
+          //calls function to Add value to Account Balance
           subToBalance();
       }
     }catch(error){
-
         Alert.alert("Error!")
     }
   }

@@ -13,8 +13,6 @@ const Signup = ({navigation}) => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
 
-
-
     const onRegisterPressed = () =>{
         try{
             if(name == "" || username == "" || email == "" || password == ""){
@@ -43,6 +41,7 @@ const Signup = ({navigation}) => {
 
 
 
+    
 
     const onSignInPressed = () => {
         navigation.navigate('Login');
