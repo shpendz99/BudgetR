@@ -44,7 +44,6 @@ export async function getFeedData(FeedDataRetrieved){
             const user  = doc.data().money
     
             FeedList.push(user)
-            console.log("Ranom: ", user)
             
         });
         

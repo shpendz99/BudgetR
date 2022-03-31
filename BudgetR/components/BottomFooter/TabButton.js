@@ -44,12 +44,15 @@ const TabButton = () => {
     }
 
  
-    //Will add Income transaction to Firestore
+    //Adding Income Transaction to Firestore Database
     const onAddIncome = async() =>{
       try{
-          if(income =="" || typeOfIncome == ""){
+          //Displays Error if the text fields are empty
+          if(income == "" || typeOfIncome == ""){
             Alert.alert("Error", "Please enter Income and the Type of Income..")
           }else{
+            //creates a document within the 'transaction' collection
+            //The transaction collection is linked to the user that is logged in
             await db
               .collection('users')
               .doc(auth.currentUser.email)
@@ -64,9 +67,8 @@ const TabButton = () => {
               //calls function to Add value to Account Balance
               addToBalance();
           }
-          
+      //Error is displayed if application cannot add Income to firestore DB
       }catch(error){
-
           Alert.alert("Error!")
       }
   }
@@ -90,9 +92,12 @@ const TabButton = () => {
   //Will add Income transaction to Firestore
   const onAddExpense = async() =>{
     try{
+      //Displays Error if the text fields are empty
       if(expense == "" || typeOfExpense == ""){
         Alert.alert("Error", "Please enter values above!")
       }else{
+        //creates a document within the 'transaction' collection
+        //The transaction collection is linked to the user that is logged in
         await db
           .collection('users')
           .doc(auth.currentUser.email)
@@ -106,6 +111,7 @@ const TabButton = () => {
           //calls function to Add value to Account Balance
           subToBalance();
       }
+    //Error is displayed if application cannot add Expense to firestore DB
     }catch(error){
         Alert.alert("Error!")
     }
@@ -125,7 +131,6 @@ const TabButton = () => {
       .update({
         account_balance: updatedExpenseBalance
     })
-    //
   }
 
 

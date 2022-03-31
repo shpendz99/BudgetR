@@ -5,7 +5,7 @@ import { auth, db } from '../../firebase'
 
 const AccountBalance = () => {
     
-    //stores Balance
+    //stores Balance using the useState hook 
     const [balance, setBalance] = useState(0);
 
     const getBalance = async() =>{
@@ -13,21 +13,20 @@ const AccountBalance = () => {
             const Username =  await auth.currentUser.email
             console.log('Authenticated Email: ', Username)
 
-            //This checks the firestore for any updates
-            //when the balance is updated on firestore, it is also updated on the app
+            //Automatically collects the user's account balance from the firestore db
             db.collection('users').doc(auth.currentUser.email).onSnapshot(doc =>{
                 setBalance(doc.data().account_balance)
             })
-                
-          } catch {
-            //do whatever
-          }
+
+        } catch {
+        //do whatever
+        }
         
     }
 
+    //useEffect hook to call the "getBalance function"
     useEffect(() => {
         getBalance();
-   
     });
 
 

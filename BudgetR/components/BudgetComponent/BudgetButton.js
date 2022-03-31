@@ -17,13 +17,13 @@ const BudgetButton = () => {
   
     const getBudget = async() =>{
       try {
-        const Username = await auth.currentUser.email
-        console.log('Authenticated Email: ', Username)
+        //Collect Budget Value from Database
         const documentSnapshot = await db
           .collection('users')
-          .doc(Username)
+          .doc(auth.currentUser.email)
           .get();
 
+        //always listening for any updates
         const userBudget = documentSnapshot.data().budget;
           setDbBudget(userBudget)
       } catch {
@@ -35,8 +35,8 @@ const BudgetButton = () => {
       try{
           if(userBudget == ""){
             Alert.alert("Error", "Please enter your Budget!")
-
           }else{
+            //Updates the user's Budget by adding the value entered with the user's current Budget
             const updatedBudget = (parseFloat(dbBudget)+parseFloat(userBudget))
             console.log("Updated Balance: ", updatedBudget)
             db
@@ -45,7 +45,6 @@ const BudgetButton = () => {
               .update({
                 budget: updatedBudget
               })
-        
             setModalVisible(!modalVisible)
           }
       }catch(error){

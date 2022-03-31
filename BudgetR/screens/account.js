@@ -36,12 +36,16 @@ class Account extends Component {
     );
   }
 
+  //handles Response --Dialogflow sends message back
   handleGoogleResponse(result) {
     console.log(result)
     let text = result.queryResult.fulfillmentMessages[0].text.text[0];
     this.sendBotResponse(text);
   }
 
+  //storing object to messages state 
+  //Extracts the message that the user entered 
+  //sends message to DialogFlow 
   onSend(messages = []) {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages)
@@ -55,6 +59,8 @@ class Account extends Component {
     );
   }
 
+  //bot(Virtual Assistant) sends message to user
+  //Application displays message from bot
   sendBotResponse(text) {
     let msg = {
       _id: this.state.messages.length + 1,

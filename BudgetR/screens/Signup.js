@@ -13,8 +13,10 @@ const Signup = ({navigation}) => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
 
+    //function allows the application to register the user
     const onRegisterPressed = () =>{
         try{
+            //Error is display if no details are entered / or if password is 6 characters or less.
             if(name == "" || username == "" || email == "" || password == ""){
                 Alert.alert("Error", "Please Provide all of the necessary data in order to Register")
             }else if(password.length <= 6) {
@@ -22,6 +24,9 @@ const Signup = ({navigation}) => {
             }else{
                 auth.createUserWithEmailAndPassword(email, password)
 
+
+                //Creates a new document within the 'users' collection
+                //the document will be the email the user entered
                 db.collection('users')
                     .doc(email)
                     .set({
@@ -33,7 +38,7 @@ const Signup = ({navigation}) => {
                         budget: 0
                 })
             }
-        
+        //Error is Displayed if the email entered already exists on the firestore Database. 
         }catch(error){
             Alert.alert("Error! User already exists.")
         }

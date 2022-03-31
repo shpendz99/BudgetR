@@ -7,6 +7,7 @@ import ListItem from '../ListFeed';
 
 
 const ViewFeed = () => {
+  //stores list of earnings and expenses in Feed List
     const [FeedList, setFeedList] = useState([])
 
     useEffect(()=>{
@@ -15,6 +16,7 @@ const ViewFeed = () => {
 
 
     function FeedDataRetrieved(FeedList){
+        
         setFeedList(FeedList)
         console.log() 
     }
@@ -27,9 +29,6 @@ const ViewFeed = () => {
         data = {FeedList}
         renderItem = {({item })=>
           <ListItem item = {item}/>
-            
-
-          
         } 
 
         />

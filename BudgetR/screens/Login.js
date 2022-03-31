@@ -14,15 +14,16 @@ const Login = ({}) => {
     const [password, setPassword] = useState('');
 
     const onSignInPressed = () =>{
-        
+
+        //validates whether the credentials entered are correct
         auth
             .signInWithEmailAndPassword(email,password)
             .then(userCredentials =>{
                 const user = userCredentials.user;
                 console.log("Logged in", user.email)
             })
+            //error displayed if credentials are incorrect
             .catch(error => alert(error.message + '\nIncorrect Credentials'))
-
     }
 
     //This code is different to the one above but does the same task !¬¬¬¬¬
